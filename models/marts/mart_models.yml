@@ -1,0 +1,62 @@
+version: 2
+
+models:
+
+  - name: mart_top_investor_recommendations
+    description: "Top 10 investor recommendations for each startup, ranked by compatibility score."
+
+    columns:
+      - name: COMPANY_ID
+        description: "Unique startup identifier."
+        data_tests:
+          - not_null
+
+      - name: INVESTOR_SLUG
+        description: "Unique investor identifier."
+        data_tests:
+          - not_null
+
+      - name: RECOMMENDATION_RANK
+        description: "Investor recommendation ranking for each startup."
+        data_tests:
+          - not_null
+
+      - name: COMPATIBILITY_SCORE
+        description: "Weighted investor-startup compatibility score."
+        data_tests:
+          - not_null
+
+  - name: mart_investor_performance
+    description: "Aggregated investor recommendation and matching performance."
+
+    columns:
+      - name: INVESTOR_SLUG
+        description: "Unique investor identifier."
+        data_tests:
+          - unique
+          - not_null
+
+      - name: TOTAL_RECOMMENDATIONS
+        description: "Total number of startup recommendations received."
+        data_tests:
+          - not_null
+
+  - name: mart_startup_matching_performance
+    description: "Aggregated investor matching performance for each startup."
+
+    columns:
+      - name: COMPANY_ID
+        description: "Unique startup identifier."
+        data_tests:
+          - unique
+          - not_null
+
+      - name: TOTAL_RECOMMENDED_INVESTORS
+        description: "Total investors evaluated for the startup."
+        data_tests:
+          - not_null
+
+      - name: BEST_COMPATIBILITY_SCORE
+        description: "Highest compatibility score among recommended investors."
+        data_tests:
+          - not_null

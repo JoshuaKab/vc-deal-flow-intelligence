@@ -1,0 +1,44 @@
+---
+# Welcome to your prefect.yaml file! You can use this file for
+# storing and managing configuration for deploying your flows.
+# We recommend committing this file to source control along
+# with your flow code.
+
+# Generic metadata about this project
+name: vc-deal-flow-intelligence
+prefect-version: 3.9.4
+
+# build section allows you to manage and build docker images
+build: null
+
+# push section allows you to manage if and how this project
+# is uploaded to remote locations
+push: null
+
+# pull section allows you to provide instructions for cloning
+# this project in remote locations
+pull:
+- prefect.deployments.steps.set_working_directory:
+    directory: E:\Data science Courses\IBM Machine Learning Course\Automated VC Deal
+      Flow Intelligence\vc_deal_flow_dbt_8
+
+# the deployments section allows you to provide configuration
+# for deploying flows
+deployments:
+- name: vc-deal-flow-daily
+  version: "1.0"
+  tags:
+    - vc-deal-flow
+    - dbt
+    - machine-learning
+  description: "Automated VC Deal Flow Intelligence pipeline using Prefect, dbt and Snowflake."
+  schedule:
+    cron: "0 6 * * *"
+    timezone: Africa/Johannesburg
+  flow_name: VC Deal Flow Intelligence Pipeline
+  entrypoint: prefect_pipeline.py:vc_deal_flow_pipeline
+  parameters: {}
+  work_pool:
+    name: vc-deal-flow-process-pool
+    work_queue_name: default
+    job_variables: {}

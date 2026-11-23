@@ -1,0 +1,25 @@
+name: vc_deal_flow_dbt_8
+
+profile: vc_deal_flow_dbt_8
+
+seed-paths: ["seeds"]
+model-paths: ["models"]
+macro-paths: ["macros"]
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+seeds:
+  # Builds seeds into '<your_schema_name>_raw'
+  vc_deal_flow_dbt_8:
+    +schema: raw
+
+models:
+  vc_deal_flow_dbt_8:
+    +static_analysis: strict
+    staging:
+      +materialized: view
+    intermediate:
+      +materialized: table
+    marts:
+      +materialized: table

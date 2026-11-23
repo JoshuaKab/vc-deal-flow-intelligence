@@ -1,0 +1,30 @@
+dbt_packages/
+dbt_internal_packages/
+logs/
+target/
+.env
+
+# Streamlit secrets and credentials
+.streamlit/secrets.toml
+
+# Python cache files
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+.venv/
+venv/
+
+# Testing and temporary files
+.pytest_cache/
+*.log
+
+# Local editor settings
+.vscode/
+
+# Old dashboard backup
+app_backup.py
+
+# Temporary development test scripts
+test_data_quality.py
+test_matching_query.py

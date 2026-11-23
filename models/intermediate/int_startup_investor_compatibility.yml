@@ -1,0 +1,37 @@
+version: 2
+
+models:
+
+  - name: int_startup_investor_compatibility
+    description: "Enriched startup-investor matching dataset combining startup profiles, investor profiles and compatibility scores."
+
+    columns:
+      - name: COMPANY_ID
+        description: "Unique startup identifier."
+        data_tests:
+          - not_null
+
+      - name: INVESTOR_SLUG
+        description: "Unique investor identifier."
+        data_tests:
+          - not_null
+
+      - name: RECOMMENDATION_RANK
+        description: "Investor ranking for each startup."
+        data_tests:
+          - not_null
+
+      - name: COMPATIBILITY_SCORE
+        description: "Weighted compatibility score between startup and investor."
+        data_tests:
+          - not_null
+
+      - name: EVIDENCE_COVERAGE
+        description: "Proportion of scoring dimensions supported by available evidence."
+        data_tests:
+          - not_null
+
+      - name: INVESTOR_TYPE
+        description: "Classification of the investor."
+        data_tests:
+          - not_null

@@ -1,0 +1,5 @@
+streamlit==1.58.0
+pandas==3.0.3
+plotly==6.7.0
+snowflake-connector-python==5.2.0
+openai==3.57.0
